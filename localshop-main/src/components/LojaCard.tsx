@@ -1,9 +1,19 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Loja } from '../@types/loja'; // Se você criou o arquivo de tipos em @types
 import styles from './StyleLojaCard';
+import { RootStackParamList } from '../types'; // Se você criou o arquivo de tipos
 
-export default function LojaCard({ loja }) {
-  const navigation = useNavigation();
+
+type NavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
+interface Props {
+  loja: Loja;
+}
+
+export default function LojaCard({ loja }: Props) {
+  const navigation = useNavigation<NavigationProp>();
   return (
     <TouchableOpacity 
       style={styles.card}
